@@ -3,11 +3,13 @@ import 'package:first_android_project/practice.dart';
 import 'package:first_android_project/screens/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:first_android_project/provider/screen_provider.dart';
+import 'package:first_android_project/provider/timer_provider.dart';
 
 void main() {
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => ScreenProvider()),
+      ChangeNotifierProvider(create: (context) => TimerProvider())
     ],
     child: MyApp(),
     )
