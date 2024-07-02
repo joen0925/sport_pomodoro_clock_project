@@ -5,12 +5,13 @@ import 'package:first_android_project/screens/switchpage_page.dart';
 
 
 class HomePage extends StatelessWidget{
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("番茄運動時鐘"),
+        title: Text(context.watch<ScreenProvider>().screenTitleName),
         centerTitle: true,
         leading: Builder(
           builder: (context){
@@ -34,6 +35,7 @@ class HomePage extends StatelessWidget{
               title: Text("番茄時鐘"),
               onTap: () {
                 context.read<ScreenProvider>().setScreenIndex(0);
+                context.read<ScreenProvider>().setScreenTitleNamae("番茄時鐘");
                 Navigator.of(context).pop();
               },
             ),
@@ -42,6 +44,7 @@ class HomePage extends StatelessWidget{
                 title: Text("運動循環時鐘"),
                 onTap: () {
                   context.read<ScreenProvider>().setScreenIndex(1);
+                  context.read<ScreenProvider>().setScreenTitleNamae("運動時鐘");
                   Navigator.of(context).pop();
                 }
             ),

@@ -7,7 +7,8 @@ import 'package:first_android_project/provider/screen_provider.dart';
 
 
 class SwitchpagePage extends StatelessWidget{
-  
+  const SwitchpagePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     int screenIndex = context.watch<ScreenProvider>().screenIndex;

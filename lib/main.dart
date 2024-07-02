@@ -4,12 +4,16 @@ import 'package:first_android_project/screens/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:first_android_project/provider/screen_provider.dart';
 import 'package:first_android_project/provider/timer_provider.dart';
+import 'package:first_android_project/provider/slider_provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final sliderProvider = SliderProvider();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => ScreenProvider()),
-      ChangeNotifierProvider(create: (context) => TimerProvider())
+      ChangeNotifierProvider(create: (context) => TimerProvider()),
+      ChangeNotifierProvider.value(value: sliderProvider),
     ],
     child: MyApp(),
     )

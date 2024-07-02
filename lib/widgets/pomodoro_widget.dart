@@ -9,8 +9,10 @@ class TimeIndicatorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double time = context.watch<TimerProvider>().start;
-    context.read<TimerProvider>().startTimer();
+    final timerProvider = Provider.of<TimerProvider>(context);
+    double time = 1 -
+        timerProvider.currentTimeInSeconds / (timerProvider.maxTimeInSeconds);
+
     return CircularProgressIndicator(
       strokeWidth: 20.0,
       valueColor: const AlwaysStoppedAnimation<Color>(Colors.red),
@@ -30,16 +32,50 @@ class StudyBreakWidget extends StatelessWidget {
     return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        //TimeWidget(),
+        TimeWidget(),
         SizedBox(height: 10.0),
-        //TimeModeWidget(),
+        TimeModeWidget(),
       ],
     );
   }
 }
 
-class TimeWiget extends StatelessWidget{
+class TimeWidget extends StatelessWidget{
+  const TimeWidget({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    final timerProvider = Provider.of<TimerProvider>(context);
+
+    return Text(
+      timerProvider.currentTimeDisplay,
+      style: Theme.of(context)
+          .textTheme
+          .headlineMedium!
+          .copyWith(fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class TimeModeWidget extends StatelessWidget{
+  const TimeModeWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final timerProvider = Provider.of<TimerProvider>(context);
+    return Text(
+      timerProvider.isBreakTime ? '休息' : '專注',
+      style: Theme.of(context)
+          .textTheme
+          .titleMedium!
+          .copyWith(fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class MediaButtons extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -47,7 +83,7 @@ class TimeWiget extends StatelessWidget{
   }
 }
 
-class TimeModeWidget extends StatelessWidget{
+class RoundsWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

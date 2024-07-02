@@ -4,7 +4,7 @@ class SportsdoroPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("番茄運動時鐘頁"),
+      child: Text("運動時鐘"),
     );
   }
 }

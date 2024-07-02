@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:first_android_project/provider/slider_provider.dart';
 import 'dart:async';
 
 class TimerProvider with ChangeNotifier {
+  //final SoundSelectionProvider _audioProvider = SoundSelectionProvider();
+
   late Timer _timer;
   int _currentRound = 1;
 
-  late int _currentTimeInSeconds;
+  int _currentTimeInSeconds = 1500;
 
   bool _isRunning = false;
   bool _isBreakTime = false;
@@ -41,7 +44,7 @@ class TimerProvider with ChangeNotifier {
     return 'Round $_currentRound of ${SliderProvider.roundSliderValue}';
   }
 
-  void toggleTimer() {
+  /*void toggleTimer() {
     if (!_isRunning) {
       _isRunning = true;
       _timer = Timer.periodic(const Duration(seconds: 1), _updateTimer);
@@ -51,9 +54,9 @@ class TimerProvider with ChangeNotifier {
       _isRunning = false;
       notifyListeners();
     }
-  }
+  }*/
 
-  void jumpNextRound() {
+  /*void jumpNextRound() {
     if (_isRunning) {
       _timer.cancel();
       _isRunning = false;
@@ -113,7 +116,7 @@ class TimerProvider with ChangeNotifier {
     _currentRound < SliderProvider.roundSliderValue
         ? _currentRound++
         : _currentRound = 1;
-  }
+  }*/
 
   void resetTimer() {
     _currentTimeInSeconds = maxTimeInSeconds;
