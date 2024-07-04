@@ -8,7 +8,7 @@ import 'dart:async';
 
 class TimerProvider with ChangeNotifier {
   //final SoundSelectionProvider _audioProvider = SoundSelectionProvider();
-  final sliderProvider = SliderProvider();
+
   late Timer _timer;
   int _currentRound = 1;
 
@@ -29,10 +29,10 @@ class TimerProvider with ChangeNotifier {
   int get currentTimeInSeconds => _currentTimeInSeconds;
 
   int get maxTimeInSeconds =>
-      (_isBreakTime ? (_currentRound == sliderProvider.roundSliderValue
-          ? sliderProvider.longBreakDurationSliderValue
-          : sliderProvider.shortBreakDurationSliderValue)
-          : sliderProvider.studyDurationSliderValue/*在這出問題*/) *
+      (_isBreakTime ? (_currentRound == SliderProvider.roundSliderValue
+          ? SliderProvider.longBreakDurationSliderValue
+          : SliderProvider.shortBreakDurationSliderValue)
+          : SliderProvider.studyDurationSliderValue/*在這出問題*/) *
           60;
 
   bool get isEqual => currentTimeInSeconds == maxTimeInSeconds;
@@ -44,7 +44,7 @@ class TimerProvider with ChangeNotifier {
   }
 
   String get currentRoundDisplay {
-    return 'Round $_currentRound of ${sliderProvider.roundSliderValue}';
+    return 'Round $_currentRound of ${SliderProvider.roundSliderValue}';
   }
 
   void toggleTimer() {
@@ -78,15 +78,15 @@ class TimerProvider with ChangeNotifier {
 
   void _timeControl() {
     if (_isBreakTime) {
-      _currentTimeInSeconds = sliderProvider.studyDurationSliderValue * 60;
+      _currentTimeInSeconds = SliderProvider.studyDurationSliderValue * 60;
       _addRound();
     } else {
-      if (_currentRound == sliderProvider.roundSliderValue) {
+      if (_currentRound == SliderProvider.roundSliderValue) {
         _currentTimeInSeconds =
-            sliderProvider.longBreakDurationSliderValue * 60;
+            SliderProvider.longBreakDurationSliderValue * 60;
       } else {
         _currentTimeInSeconds =
-            sliderProvider.shortBreakDurationSliderValue * 60;
+            SliderProvider.shortBreakDurationSliderValue * 60;
       }
     }
 
@@ -117,7 +117,7 @@ class TimerProvider with ChangeNotifier {
   }
 
   void _addRound() {
-    _currentRound < sliderProvider.roundSliderValue
+    _currentRound < SliderProvider.roundSliderValue
         ? _currentRound++
         : _currentRound = 1;
   }

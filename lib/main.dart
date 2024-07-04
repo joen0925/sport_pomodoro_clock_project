@@ -6,13 +6,14 @@ import 'package:first_android_project/provider/screen_provider.dart';
 import 'package:first_android_project/provider/timer_provider.dart';
 import 'package:first_android_project/provider/slider_provider.dart';
 //import 'package:first_android_project/provider/audio_provider.dart';
-//import 'package:first_android_project/provider/auto_start_provider.dart';
+import 'package:first_android_project/provider/auto_start_provider.dart';
 //import 'package:first_android_project/provider/notification_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sliderProvider = SliderProvider();
-  //final autoStartProvider = AutoStartProvider();
+  await sliderProvider.loadSliderFromSharedPref();
+  final autoStartProvider = AutoStartProvider();
   //final notificationProvider = NotificationProvider();
   runApp(
     MultiProvider(providers: [
@@ -21,7 +22,7 @@ void main() async {
       ChangeNotifierProvider.value(value: sliderProvider),
       //ChangeNotifierProvider.value(value: notificationProvider),
       //ChangeNotifierProvider(create: (context) => SoundSelectionProvider()),
-      //ChangeNotifierProvider.value(value: autoStartProvider)
+      ChangeNotifierProvider.value(value: autoStartProvider)
     ],
     child: MyApp(),
     )

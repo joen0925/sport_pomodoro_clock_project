@@ -3,19 +3,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SliderProvider with ChangeNotifier {
 
-  late int  _studyDurationSliderValue;
-  late int _shortBreakDurationSliderValue;
-  late int _longBreakDurationSliderValue;
-  late int _roundSliderValue;
+  static late int  _studyDurationSliderValue;
+  static late int _shortBreakDurationSliderValue;
+  static late int _longBreakDurationSliderValue;
+  static late int _roundSliderValue;
 
-  int get studyDurationSliderValue => _studyDurationSliderValue;/*沒有初始化成功*/
-  int get shortBreakDurationSliderValue =>
+  static int get studyDurationSliderValue => _studyDurationSliderValue;/*沒有初始化成功*/
+  static int get shortBreakDurationSliderValue =>
       _shortBreakDurationSliderValue;
-  int get longBreakDurationSliderValue => _longBreakDurationSliderValue;
-  int get roundSliderValue => _roundSliderValue;
+  static int get longBreakDurationSliderValue => _longBreakDurationSliderValue;
+  static int get roundSliderValue => _roundSliderValue;
 
-  SliderProvider() {
-    _loadSliderFromSharedPref();
+  SliderProvider()  {
+    loadSliderFromSharedPref();
   }
 
   void updateWorkDurationSliderValue(int newValue) {
@@ -52,7 +52,7 @@ class SliderProvider with ChangeNotifier {
     prefs.setInt(key, value);
   }
 
-  Future<void> _loadSliderFromSharedPref() async{
+  Future<void> loadSliderFromSharedPref() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     _studyDurationSliderValue =
