@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:first_android_project/provider/auto_start_provider.dart';
-//import 'package:first_android_project/provider/notification_provider.dart';
+import 'package:first_android_project/provider/notification_provider.dart';
 import 'package:first_android_project/provider/slider_provider.dart';
-//import 'package:first_android_project/provider/audio_provider.dart';
+import 'package:first_android_project/provider/audio_provider.dart';
 import 'dart:async';
 
 
 class TimerProvider with ChangeNotifier {
-  //final SoundSelectionProvider _audioProvider = SoundSelectionProvider();
+  final SoundSelectionProvider _audioProvider = SoundSelectionProvider();
 
   late Timer _timer;
   int _currentRound = 1;
@@ -110,9 +110,9 @@ class TimerProvider with ChangeNotifier {
         notifyListeners();
       }
 
-      /*if (NotificationProvider.isActive) {
+      if (NotificationProvider.isActive) {
         _audioProvider.playSelectedAudio();
-      }*/
+      }
     }
   }
 

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:first_android_project/provider/slider_provider.dart';
 import 'package:first_android_project/provider/timer_provider.dart';
+import 'package:first_android_project/provider/audio_provider.dart';
+import 'package:first_android_project/provider/auto_start_provider.dart';
+import 'package:first_android_project/provider/notification_provider.dart';
 
 class TimeandRoundWidget extends StatelessWidget {
   const TimeandRoundWidget({
@@ -125,6 +128,72 @@ class TextWithPadding extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: Text(text, style: Theme.of(context).textTheme.titleMedium),
+    );
+  }
+}
+
+class NotificationSoundWidget extends StatelessWidget {
+  const NotificationSoundWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<SoundSelectionProvider>(
+        builder: (context, provider, child) {
+          return DropdownButtonFormField<String>(
+            value: provider.selectedAudioFile,
+            decoration: const InputDecoration(
+              labelText: '提醒音效',
+            ),
+            items: provider.audioFiles.map((audioFile) {
+              return DropdownMenuItem<String>(
+                value: audioFile,
+                child: Text(
+                  audioFile,
+                ),
+              );
+            }).toList(),
+            onChanged: (value) {
+              provider.setSelectedAudioFile(value!);
+            },
+          );
+        });
+  }
+}
+
+class AutoStartSwitch extends StatelessWidget {
+  const AutoStartSwitch({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final autoStartProvider = Provider.of<AutoStartProvider>(context);
+    return SwitchListTile(
+      title: const Text('自動開始'),
+      value: AutoStartProvider.autoStart,
+      onChanged: (value) {
+        value = !value;
+        autoStartProvider.switchMode();
+      },
+    );
+  }
+}
+
+class SettingsNotificationSwitch extends StatelessWidget {
+  const SettingsNotificationSwitch({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final notificationProvider = Provider.of<NotificationProvider>(context);
+    return SwitchListTile(
+      title: const Text('Notifications'),
+      value: NotificationProvider.isActive,
+      onChanged: (value) {
+        value = !value;
+        notificationProvider.switchMode();
+      },
     );
   }
 }

@@ -17,12 +17,10 @@ class SettingsPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text("設定頁面"),
                   TimeandRoundWidget(),
-                  //NotificationSoundWidget(),
-                  //SettingsNotificationSwitch(),
-                  //SettingsDarkModeSwitch(),
-                  //AutoStartSwitch(),
+                  NotificationSoundWidget(),
+                  SettingsNotificationSwitch(),
+                  AutoStartSwitch(),
                 ],
               ),
             ),
