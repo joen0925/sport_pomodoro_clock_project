@@ -25,7 +25,7 @@ class PomodoroPage extends StatelessWidget{
               ),
             ),
             const MediaButtons(),
-            //const RoundsWidget(),
+            const RoundsWidget(),
             IconButton(
               icon: Icon(Icons.settings),
               onPressed: () {

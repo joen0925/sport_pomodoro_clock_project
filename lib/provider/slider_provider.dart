@@ -8,7 +8,7 @@ class SliderProvider with ChangeNotifier {
   static late int _longBreakDurationSliderValue;
   static late int _roundSliderValue;
 
-  static int get studyDurationSliderValue => _studyDurationSliderValue;/*沒有初始化成功*/
+  static int get studyDurationSliderValue => _studyDurationSliderValue;
   static int get shortBreakDurationSliderValue =>
       _shortBreakDurationSliderValue;
   static int get longBreakDurationSliderValue => _longBreakDurationSliderValue;

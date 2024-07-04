@@ -32,7 +32,7 @@ class TimerProvider with ChangeNotifier {
       (_isBreakTime ? (_currentRound == SliderProvider.roundSliderValue
           ? SliderProvider.longBreakDurationSliderValue
           : SliderProvider.shortBreakDurationSliderValue)
-          : SliderProvider.studyDurationSliderValue/*在這出問題*/) *
+          : SliderProvider.studyDurationSliderValue) *
           60;
 
   bool get isEqual => currentTimeInSeconds == maxTimeInSeconds;
@@ -123,7 +123,7 @@ class TimerProvider with ChangeNotifier {
   }
 
   void resetTimer() {
-    _currentTimeInSeconds = maxTimeInSeconds;/*這裡是頭*/
+    _currentTimeInSeconds = maxTimeInSeconds;
     notifyListeners();
   }
 }

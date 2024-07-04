@@ -15,7 +15,7 @@ class TimeIndicatorWidget extends StatelessWidget {
 
     return CircularProgressIndicator(
       strokeWidth: 20.0,
-      valueColor: const AlwaysStoppedAnimation<Color>(Colors.red),
+      valueColor: const AlwaysStoppedAnimation<Color>(Colors.orangeAccent),
       backgroundColor: Colors.redAccent,
       value: time,
     );
@@ -107,9 +107,13 @@ class MediaButtons extends StatelessWidget{
 }
 
 class RoundsWidget extends StatelessWidget{
+  const RoundsWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    final timerProvider = Provider.of<TimerProvider>(context);
+    return Center(
+      child: Text(timerProvider.currentRoundDisplay),
+    );
   }
 }
