@@ -76,10 +76,33 @@ class TimeModeWidget extends StatelessWidget{
 }
 
 class MediaButtons extends StatelessWidget{
+  const MediaButtons({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    final timeProvider = Provider.of<TimerProvider>(context);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IconButton(
+          icon: Icon(Icons.replay, size: 30.0,),
+          onPressed: timeProvider.isEqual ? null : timeProvider.resetTimer,
+        ),
+        IconButton(
+          icon: Icon(
+            timeProvider.isRunning ?  Icons.pause : Icons.play_arrow, size: 30.0,),
+          onPressed: (){
+            timeProvider.toggleTimer();
+            },
+        ),
+        IconButton(
+          icon: Icon(Icons.navigate_next, size: 30.0,),
+          onPressed: (){
+            timeProvider.jumpNextRound();
+          },
+        ),
+      ],
+    );
   }
 }
 

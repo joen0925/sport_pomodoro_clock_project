@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SliderProvider with ChangeNotifier {
-  late SharedPreferences _sharedPreferences;
 
-  static late int _studyDurationSliderValue;
-  static late int _shortBreakDurationSliderValue;
-  static late int _longBreakDurationSliderValue;
-  static late int _roundSliderValue;
+  late int  _studyDurationSliderValue;
+  late int _shortBreakDurationSliderValue;
+  late int _longBreakDurationSliderValue;
+  late int _roundSliderValue;
 
-  static int get studyDurationSliderValue => _studyDurationSliderValue;
-  static int get shortBreakDurationSliderValue =>
+  int get studyDurationSliderValue => _studyDurationSliderValue;/*沒有初始化成功*/
+  int get shortBreakDurationSliderValue =>
       _shortBreakDurationSliderValue;
-  static int get longBreakDurationSliderValue => _longBreakDurationSliderValue;
-  static int get roundSliderValue => _roundSliderValue;
+  int get longBreakDurationSliderValue => _longBreakDurationSliderValue;
+  int get roundSliderValue => _roundSliderValue;
 
   SliderProvider() {
-    loadSliderFromSharedPref();
+    _loadSliderFromSharedPref();
   }
 
   void updateWorkDurationSliderValue(int newValue) {
@@ -47,24 +46,22 @@ class SliderProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> createSharedPrefObject() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
+
+  Future<void> saveSliderToSharedPref(String key, int value) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(key, value);
   }
 
-  void saveSliderToSharedPref(String key, int value) {
-    _sharedPreferences.setInt(key, value);
-  }
+  Future<void> _loadSliderFromSharedPref() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  Future<void> loadSliderFromSharedPref() async {
-    await createSharedPrefObject();
     _studyDurationSliderValue =
-        _sharedPreferences.getInt('studyDurationSliderValue') ?? 25;
+        prefs.getInt('studyDurationSliderValue') ?? 25;
     _shortBreakDurationSliderValue =
-        _sharedPreferences.getInt('shortBreakDurationSliderValue') ?? 5;
+        prefs.getInt('shortBreakDurationSliderValue') ?? 5;
     _longBreakDurationSliderValue =
-        _sharedPreferences.getInt('longBreakDurationSliderValue') ?? 15;
-    _roundSliderValue = _sharedPreferences.getInt('roundSliderValue') ?? 4;
-
+        prefs.getInt('longBreakDurationSliderValue') ?? 15;
+    _roundSliderValue = prefs.getInt('roundSliderValue') ?? 4;
     notifyListeners();
   }
 }

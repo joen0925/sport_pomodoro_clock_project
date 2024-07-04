@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:first_android_project/provider/auto_start_provider.dart';
+//import 'package:first_android_project/provider/notification_provider.dart';
 import 'package:first_android_project/provider/slider_provider.dart';
+//import 'package:first_android_project/provider/audio_provider.dart';
 import 'dart:async';
+
 
 class TimerProvider with ChangeNotifier {
   //final SoundSelectionProvider _audioProvider = SoundSelectionProvider();
-
+  final sliderProvider = SliderProvider();
   late Timer _timer;
   int _currentRound = 1;
 
-  int _currentTimeInSeconds = 1500;
+  late int _currentTimeInSeconds;
 
   bool _isRunning = false;
   bool _isBreakTime = false;
+
 
   TimerProvider() {
     resetTimer();
@@ -25,11 +29,10 @@ class TimerProvider with ChangeNotifier {
   int get currentTimeInSeconds => _currentTimeInSeconds;
 
   int get maxTimeInSeconds =>
-      (_isBreakTime
-          ? (_currentRound == SliderProvider.roundSliderValue
-          ? SliderProvider.longBreakDurationSliderValue
-          : SliderProvider.shortBreakDurationSliderValue)
-          : SliderProvider.studyDurationSliderValue) *
+      (_isBreakTime ? (_currentRound == sliderProvider.roundSliderValue
+          ? sliderProvider.longBreakDurationSliderValue
+          : sliderProvider.shortBreakDurationSliderValue)
+          : sliderProvider.studyDurationSliderValue/*在這出問題*/) *
           60;
 
   bool get isEqual => currentTimeInSeconds == maxTimeInSeconds;
@@ -41,10 +44,11 @@ class TimerProvider with ChangeNotifier {
   }
 
   String get currentRoundDisplay {
-    return 'Round $_currentRound of ${SliderProvider.roundSliderValue}';
+    return 'Round $_currentRound of ${sliderProvider.roundSliderValue}';
   }
 
-  /*void toggleTimer() {
+  void toggleTimer() {
+
     if (!_isRunning) {
       _isRunning = true;
       _timer = Timer.periodic(const Duration(seconds: 1), _updateTimer);
@@ -54,9 +58,9 @@ class TimerProvider with ChangeNotifier {
       _isRunning = false;
       notifyListeners();
     }
-  }*/
+  }
 
-  /*void jumpNextRound() {
+  void jumpNextRound() {
     if (_isRunning) {
       _timer.cancel();
       _isRunning = false;
@@ -74,15 +78,15 @@ class TimerProvider with ChangeNotifier {
 
   void _timeControl() {
     if (_isBreakTime) {
-      _currentTimeInSeconds = SliderProvider.studyDurationSliderValue * 60;
+      _currentTimeInSeconds = sliderProvider.studyDurationSliderValue * 60;
       _addRound();
     } else {
-      if (_currentRound == SliderProvider.roundSliderValue) {
+      if (_currentRound == sliderProvider.roundSliderValue) {
         _currentTimeInSeconds =
-            SliderProvider.longBreakDurationSliderValue * 60;
+            sliderProvider.longBreakDurationSliderValue * 60;
       } else {
         _currentTimeInSeconds =
-            SliderProvider.shortBreakDurationSliderValue * 60;
+            sliderProvider.shortBreakDurationSliderValue * 60;
       }
     }
 
@@ -106,20 +110,20 @@ class TimerProvider with ChangeNotifier {
         notifyListeners();
       }
 
-      if (NotificationProvider.isActive) {
+      /*if (NotificationProvider.isActive) {
         _audioProvider.playSelectedAudio();
-      }
+      }*/
     }
   }
 
   void _addRound() {
-    _currentRound < SliderProvider.roundSliderValue
+    _currentRound < sliderProvider.roundSliderValue
         ? _currentRound++
         : _currentRound = 1;
-  }*/
+  }
 
   void resetTimer() {
-    _currentTimeInSeconds = maxTimeInSeconds;
+    _currentTimeInSeconds = maxTimeInSeconds;/*這裡是頭*/
     notifyListeners();
   }
 }

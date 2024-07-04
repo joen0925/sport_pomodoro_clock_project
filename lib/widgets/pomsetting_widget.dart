@@ -15,7 +15,7 @@ class TimeandRoundWidget extends StatelessWidget {
       children: [
         DurationWidget(
           title: '專注時間',
-          sliderValue: SliderProvider.studyDurationSliderValue,
+          sliderValue: sliderProvider.studyDurationSliderValue,
           max: 60,
           min: 5,
           updateValue: (newValue) {
@@ -25,7 +25,7 @@ class TimeandRoundWidget extends StatelessWidget {
         ),
         DurationWidget(
           title: '短休息時間',
-          sliderValue: SliderProvider.shortBreakDurationSliderValue,
+          sliderValue: sliderProvider.shortBreakDurationSliderValue,
           max: 30,
           min: 1,
           updateValue: (newValue) {
@@ -35,7 +35,7 @@ class TimeandRoundWidget extends StatelessWidget {
         ),
         DurationWidget(
           title: '長休息時間',
-          sliderValue: SliderProvider.longBreakDurationSliderValue,
+          sliderValue: sliderProvider.longBreakDurationSliderValue,
           max: 45,
           min: 1,
           updateValue: (newValue) {
@@ -45,7 +45,7 @@ class TimeandRoundWidget extends StatelessWidget {
         ),
         DurationWidget(
           title: '回合',
-          sliderValue: SliderProvider.roundSliderValue,
+          sliderValue: sliderProvider.roundSliderValue,
           max: 15,
           min: 2,
           updateValue: (newValue) {
