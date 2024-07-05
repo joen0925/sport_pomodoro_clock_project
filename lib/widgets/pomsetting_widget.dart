@@ -188,7 +188,7 @@ class SettingsNotificationSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     final notificationProvider = Provider.of<NotificationProvider>(context);
     return SwitchListTile(
-      title: const Text('Notifications'),
+      title: const Text('提醒音效'),
       value: NotificationProvider.isActive,
       onChanged: (value) {
         value = !value;

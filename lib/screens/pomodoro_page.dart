@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:first_android_project/screens/setting_page.dart';
+import 'package:first_android_project/screens/pomsetting_page.dart';
 import 'package:first_android_project/widgets/pomodoro_widget.dart';
 
 class PomodoroPage extends StatelessWidget{

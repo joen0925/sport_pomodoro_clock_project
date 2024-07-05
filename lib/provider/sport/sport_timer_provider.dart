@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:first_android_project/provider/auto_start_provider.dart';
 import 'package:first_android_project/provider/notification_provider.dart';
-import 'package:first_android_project/provider/slider_provider.dart';
+import 'package:first_android_project/provider/sport/sport_slider_provider.dart';
 import 'package:first_android_project/provider/audio_provider.dart';
 import 'dart:async';
 
 
-class TimerProvider with ChangeNotifier {
+class SportTimerProvider with ChangeNotifier {
   final SoundSelectionProvider _audioProvider = SoundSelectionProvider();
 
   late Timer _timer;
-  int _currentRound = 1;
+  int _currentRound = 0;
 
   late int _currentTimeInSeconds;
 
   bool _isRunning = false;
   bool _isBreakTime = false;
+  bool _isBuffer = false;
 
 
-  TimerProvider() {
+  SportTimerProvider() {
     resetTimer();
   }
 
@@ -26,14 +27,14 @@ class TimerProvider with ChangeNotifier {
 
   bool get isBreakTime => _isBreakTime;
 
+  bool get isBuffer => _isBuffer;
+
   int get currentTimeInSeconds => _currentTimeInSeconds;
 
-  int get maxTimeInSeconds =>
-      (_isBreakTime ? (_currentRound == SliderProvider.roundSliderValue
-          ? SliderProvider.longBreakDurationSliderValue
-          : SliderProvider.shortBreakDurationSliderValue)
-          : SliderProvider.studyDurationSliderValue) *
-          60;
+  int get maxTimeInSeconds => (_isBreakTime ?
+          (_isBuffer ? SportSliderProvider.bufferDurationSliderValue
+              : SportSliderProvider.breakDurationSliderValue * 60)
+              : SportSliderProvider.sportDurationSliderValue * 60) ;
 
   bool get isEqual => currentTimeInSeconds == maxTimeInSeconds;
 
@@ -43,12 +44,8 @@ class TimerProvider with ChangeNotifier {
     return '$minutes:${seconds.toString().padLeft(2, '0')}';
   }
 
-  String get currentRoundDisplay {
-    return '回合 $_currentRound 之 ${SliderProvider.roundSliderValue}';
-  }
-
-  String get sportCurrentRoundDisplay{
-    return '已完成 ${_currentRound - 1} ';
+  String get currentRoundDisplay{
+    return '已完成 $_currentRound 次';
   }
 
   void toggleTimer() {
@@ -64,7 +61,7 @@ class TimerProvider with ChangeNotifier {
     }
   }
 
-  void jumpNextRound() {
+  void jumpNextRound() {//待修改
     if (_isRunning) {
       _timer.cancel();
       _isRunning = false;
@@ -81,20 +78,20 @@ class TimerProvider with ChangeNotifier {
   }
 
   void _timeControl() {
-    if (_isBreakTime) {//判斷休息時間是否結束
-      _currentTimeInSeconds = SliderProvider.studyDurationSliderValue * 60;
+    if (_isBuffer) {//判斷緩衝時間是否結束
+      _currentTimeInSeconds = SportSliderProvider.sportDurationSliderValue * 60;
+      _isBuffer = !_isBuffer;//重製
+      _isBreakTime = !_isBreakTime;//重製
       _addRound();
-    } else {
-      if (_currentRound == SliderProvider.roundSliderValue) {
-        _currentTimeInSeconds =
-            SliderProvider.longBreakDurationSliderValue * 60;
-      } else {
-        _currentTimeInSeconds =
-            SliderProvider.shortBreakDurationSliderValue * 60;
-      }
+    }else if(_isBreakTime){//判斷休息時間是否結束
+          _currentTimeInSeconds =
+              SportSliderProvider.bufferDurationSliderValue;
+          _isBuffer = !_isBuffer;//緩重時間完成
+    }else{//運動時間結束(進入休息時間)
+      _currentTimeInSeconds =
+          SportSliderProvider.breakDurationSliderValue * 60;
+      _isBreakTime = !_isBreakTime;//休息時間完成
     }
-
-    _isBreakTime = !_isBreakTime;
     toggleTimer();
   }
 
@@ -121,14 +118,12 @@ class TimerProvider with ChangeNotifier {
   }
 
   void _addRound() {
-    _currentRound < SliderProvider.roundSliderValue
-        ? _currentRound++
-        : _currentRound = 1;
+    _currentRound++;
   }
-
 
   void resetTimer() {
     _currentTimeInSeconds = maxTimeInSeconds;
+    _currentRound = 0;
     notifyListeners();
   }
 }

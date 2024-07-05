@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:first_android_project/screens/pomodoro_page.dart';
-import 'package:first_android_project/screens/sportsdoro_page.dart';
+import 'package:first_android_project/screens/sportdoro_page.dart';
 import 'package:first_android_project/provider/screen_provider.dart';
 
 
