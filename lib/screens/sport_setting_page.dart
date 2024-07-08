@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:first_android_project/widgets/sportsetting_widget.dart';
 
 class SportsSettingsPage extends StatelessWidget {
   const SportsSettingsPage({super.key});
@@ -16,10 +17,10 @@ class SportsSettingsPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  //TimeandRoundWidget(),
-                  //NotificationSoundWidget(),
-                  //SettingsNotificationSwitch(),
-                  //AutoStartSwitch(),
+                  TimeandRoundWidget(),
+                  NotificationSoundWidget(),
+                  SettingsNotificationSwitch(),
+                  AutoStartSwitch(),
                 ],
               ),
             ),

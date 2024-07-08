@@ -1,10 +1,14 @@
+import 'package:first_android_project/provider/sport/sport_timer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:first_android_project/provider/slider_provider.dart';
+import 'package:first_android_project/provider/sport/sport_slider_provider.dart';
 import 'package:first_android_project/provider/timer_provider.dart';
 import 'package:first_android_project/provider/audio_provider.dart';
 import 'package:first_android_project/provider/auto_start_provider.dart';
 import 'package:first_android_project/provider/notification_provider.dart';
+
+
+
 
 class TimeandRoundWidget extends StatelessWidget {
   const TimeandRoundWidget({
@@ -13,48 +17,38 @@ class TimeandRoundWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sliderProvider = Provider.of<SliderProvider>(context);
+    final sportSliderProvider = Provider.of<SportSliderProvider>(context);
     return Column(
       children: [
         DurationWidget(
-          title: '專注時間',
-          sliderValue: SliderProvider.studyDurationSliderValue,
-          max: 60,
-          min: 5,
+          title: '運動時間',
+          sliderValue: SportSliderProvider.sportDurationSliderValue,
+          max: 5,
+          min: 1,
           updateValue: (newValue) {
-            sliderProvider.updateWorkDurationSliderValue(newValue);
+            sportSliderProvider.updateSportDurationSliderValue(newValue);
           },
           minText: '分',
         ),
         DurationWidget(
-          title: '短休息時間',
-          sliderValue: SliderProvider.shortBreakDurationSliderValue,
+          title: '休息時間',
+          sliderValue: SportSliderProvider.breakDurationSliderValue,
+          max: 5,
+          min: 1,
+          updateValue: (newValue) {
+            sportSliderProvider.updateBreakDurationSliderValue(newValue);
+          },
+          minText: '分',
+        ),
+        DurationWidget(
+          title: '預備時間',
+          sliderValue: SportSliderProvider.bufferDurationSliderValue,
           max: 30,
           min: 1,
           updateValue: (newValue) {
-            sliderProvider.updateShortBreakDurationSliderValue(newValue);
+            sportSliderProvider.updateBufferDurationSliderValue(newValue);
           },
-          minText: '分',
-        ),
-        DurationWidget(
-          title: '長休息時間',
-          sliderValue: SliderProvider.longBreakDurationSliderValue,
-          max: 45,
-          min: 1,
-          updateValue: (newValue) {
-            sliderProvider.updateLongBreakDurationSliderValue(newValue);
-          },
-          minText: '分',
-        ),
-        DurationWidget(
-          title: '回合',
-          sliderValue: SliderProvider.roundSliderValue,
-          max: 15,
-          min: 2,
-          updateValue: (newValue) {
-            sliderProvider.updateRoundSliderValue(newValue);
-          },
-          minText: '',
+          minText: '秒',
         ),
       ],
     );
@@ -81,7 +75,7 @@ class DurationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final timerProvider = Provider.of<TimerProvider>(context);
+    final timerProvider = Provider.of<SportTimerProvider>(context);
     return Column(
       children: [
         SizedBox(

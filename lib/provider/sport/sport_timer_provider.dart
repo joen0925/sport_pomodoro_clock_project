@@ -123,6 +123,10 @@ class SportTimerProvider with ChangeNotifier {
 
   void resetTimer() {
     _currentTimeInSeconds = maxTimeInSeconds;
+    notifyListeners();
+  }
+
+  void resetCurrentRound(){
     _currentRound = 0;
     notifyListeners();
   }

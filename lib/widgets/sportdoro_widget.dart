@@ -113,7 +113,13 @@ class RoundsWidget extends StatelessWidget{
   Widget build(BuildContext context) {
     final timerProvider = Provider.of<SportTimerProvider>(context);
     return Center(
-      child: Text(timerProvider.currentRoundDisplay),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(timerProvider.currentRoundDisplay),
+          IconButton(onPressed: (){timerProvider.resetCurrentRound();}, icon: Icon(Icons.restart_alt))
+        ],
+      ),
     );
   }
 }
