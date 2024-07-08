@@ -2,7 +2,6 @@ import 'package:first_android_project/provider/sport/sport_timer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:first_android_project/provider/sport/sport_slider_provider.dart';
-import 'package:first_android_project/provider/timer_provider.dart';
 import 'package:first_android_project/provider/audio_provider.dart';
 import 'package:first_android_project/provider/auto_start_provider.dart';
 import 'package:first_android_project/provider/notification_provider.dart';

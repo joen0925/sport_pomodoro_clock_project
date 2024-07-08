@@ -28,6 +28,7 @@ class HomePage extends StatelessWidget{
         backgroundColor: Color(0xFFF17F42),
       ),
       drawer: Drawer(
+        backgroundColor: Color(0xFFFFEEE4),
         child: ListView(
           children: <Widget>[
             DrawerHeader(

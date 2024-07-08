@@ -1,16 +1,10 @@
 # 番茄運動時鐘
 
-A new Flutter project.
+自律人專用的APP，不管是靜態動態都屬於你。
 
-## Getting Started
+## 功能介紹
 
-This project is a starting point for a Flutter application.
+* 運動時鐘
 
-A few resources to get you started if this is your first Flutter project:
+* 番茄時鐘
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

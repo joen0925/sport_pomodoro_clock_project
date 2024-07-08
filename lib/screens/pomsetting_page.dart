@@ -6,7 +6,10 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color(0xFFFFEEE4),
+      ),
+      backgroundColor: Color(0xFFFFEEE4),
       body: const Padding(
         padding: EdgeInsets.all(15.0),
         child: CustomScrollView(
