@@ -5,8 +5,11 @@
 ## 功能介紹
 
 * 運動時鐘
-![運動時鐘主頁](assets/images/github/sport_page.png)
-![運動時鐘設定頁](assets/images/github/sportsetting_page.png)
+<div style="display: flex; flex-direction: row;">
+  <img src="assets/images/github/sport_page.png" width="150" height="250">
+  <img src="assets/images/github/sportsetting_page.png" width="150" height="250">
+</div>
+
 * 番茄時鐘
 
 
