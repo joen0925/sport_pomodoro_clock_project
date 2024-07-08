@@ -33,8 +33,8 @@ class SportTimerProvider with ChangeNotifier {
 
   int get maxTimeInSeconds => (_isBreakTime ?
           (_isBuffer ? SportSliderProvider.bufferDurationSliderValue
-              : SportSliderProvider.breakDurationSliderValue * 60)
-              : SportSliderProvider.sportDurationSliderValue * 60) ;
+              : SportSliderProvider.breakDurationSliderValue )
+              : SportSliderProvider.sportDurationSliderValue) ;
 
   bool get isEqual => currentTimeInSeconds == maxTimeInSeconds;
 
@@ -79,7 +79,7 @@ class SportTimerProvider with ChangeNotifier {
 
   void _timeControl() {
     if (_isBuffer) {//判斷緩衝時間是否結束
-      _currentTimeInSeconds = SportSliderProvider.sportDurationSliderValue * 60;
+      _currentTimeInSeconds = SportSliderProvider.sportDurationSliderValue ;
       _isBuffer = !_isBuffer;//重製
       _isBreakTime = !_isBreakTime;//重製
       _addRound();
@@ -89,7 +89,7 @@ class SportTimerProvider with ChangeNotifier {
           _isBuffer = !_isBuffer;//緩重時間完成
     }else{//運動時間結束(進入休息時間)
       _currentTimeInSeconds =
-          SportSliderProvider.breakDurationSliderValue * 60;
+          SportSliderProvider.breakDurationSliderValue;
       _isBreakTime = !_isBreakTime;//休息時間完成
     }
     toggleTimer();

@@ -49,9 +49,9 @@ class SportSliderProvider with ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     _sportDurationSliderValue =
-        prefs.getInt('sportDurationSliderValue') ?? 1;
+        prefs.getInt('sportDurationSliderValue') ?? 30;
     _breakDurationSliderValue =
-        prefs.getInt('breakDurationSliderValue') ?? 1;
+        prefs.getInt('breakDurationSliderValue') ?? 30;
     _bufferDurationSliderValue =
         prefs.getInt('bufferDurationSliderValue') ?? 5;
   }

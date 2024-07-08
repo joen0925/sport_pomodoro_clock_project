@@ -56,6 +56,6 @@ class SoundSelectionProvider with ChangeNotifier {
   }
 
   void playSelectedAudio() {
-    _audioPlayer.play(AssetSource('sound/$_selectedAudioFile.wav'));
+    _audioPlayer.play(AssetSource('sounds/$_selectedAudioFile.wav'));
   }
 }

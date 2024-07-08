@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:first_android_project/provider/screen_provider.dart';
@@ -23,11 +25,18 @@ class HomePage extends StatelessWidget{
             );
           },
         ),
+        backgroundColor: Color(0xFFF17F42),
       ),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
             DrawerHeader(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/runtomato_icon.png'),
+                  fit: BoxFit.none
+                ),
+              ),
               child: Text('番茄運動時鐘'), //menu設計
             ),
             ListTile(
@@ -41,25 +50,18 @@ class HomePage extends StatelessWidget{
             ),
             ListTile(
                 leading: Icon(Icons.directions_run),
-                title: Text("運動循環時鐘"),
+                title: Text("運動循環時鐘",),
                 onTap: () {
                   context.read<ScreenProvider>().setScreenIndex(1);
                   context.read<ScreenProvider>().setScreenTitleNamae("運動時鐘");
                   Navigator.of(context).pop();
                 }
             ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title:Text("錯誤測試"),
-              onTap: (){
-                context.read<ScreenProvider>().setScreenIndex(2);
-                Navigator.of(context).pop();
-              },
-            )
           ],
         ),
       ),
       body:SwitchpagePage(),
+      backgroundColor: Color(0xFFFFEEE4),
     );
   }
 }

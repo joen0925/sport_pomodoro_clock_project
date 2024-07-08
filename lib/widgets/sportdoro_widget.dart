@@ -16,7 +16,7 @@ class TimeIndicatorWidget extends StatelessWidget {
     return LinearProgressIndicator(
       minHeight: 5.0,
       valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Color(0xFFCE6D39),
       value: time,
     );
   }
@@ -85,7 +85,7 @@ class MediaButtons extends StatelessWidget{
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
-          icon: Icon(Icons.replay, size: 30.0,),
+          icon: const Icon(Icons.replay, size: 30.0,),
           onPressed: timeProvider.isEqual ? null : timeProvider.resetTimer,
         ),
         IconButton(
@@ -96,7 +96,7 @@ class MediaButtons extends StatelessWidget{
           },
         ),
         IconButton(
-          icon: Icon(Icons.navigate_next, size: 30.0,),
+          icon: const Icon(Icons.navigate_next, size: 30.0,),
           onPressed: (){
             timeProvider.jumpNextRound();
           },
@@ -117,7 +117,7 @@ class RoundsWidget extends StatelessWidget{
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(timerProvider.currentRoundDisplay),
-          IconButton(onPressed: (){timerProvider.resetCurrentRound();}, icon: Icon(Icons.restart_alt))
+          IconButton(onPressed: (){timerProvider.resetCurrentRound();}, icon: const Icon(Icons.restart_alt))
         ],
       ),
     );

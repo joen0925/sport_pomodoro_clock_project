@@ -23,17 +23,17 @@ class TimeandRoundWidget extends StatelessWidget {
         DurationWidget(
           title: '運動時間',
           sliderValue: SportSliderProvider.sportDurationSliderValue,
-          max: 5,
+          max: 60,
           min: 1,
           updateValue: (newValue) {
             sportSliderProvider.updateSportDurationSliderValue(newValue);
           },
-          minText: '分',
+          minText: '秒',
         ),
         DurationWidget(
           title: '休息時間',
           sliderValue: SportSliderProvider.breakDurationSliderValue,
-          max: 5,
+          max: 60,
           min: 1,
           updateValue: (newValue) {
             sportSliderProvider.updateBreakDurationSliderValue(newValue);
