@@ -35,7 +35,7 @@ class SoundSelectionProvider with ChangeNotifier {
 
     _audioFiles = manifestMap.keys
         .where((String key) =>
-    key.startsWith('assets/sound/') && key.endsWith('.wav'))
+    key.startsWith('assets/sounds/') && key.endsWith('.wav'))
         .map((audioFile) {
       final fileName = audioFile.split('/').last;
       return fileName.substring(0, fileName.lastIndexOf('.'));
