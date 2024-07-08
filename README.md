@@ -9,9 +9,9 @@
   <img src="assets/images/github/sport_page.png" width="200" height="400">
   <img src="assets/images/github/sportsetting_page.png" width="200" height="400">
 </div>
-運動時鐘的循環階段
-運動 -> 休息 -> 預備階段
-只需將手機放在地上即可專心運動和調整姿勢，不用在意時間。
+運動時鐘的循環階段<br>
+運動 -> 休息 -> 預備階段<br>
+只需將手機放在地上即可專心運動和調整姿勢，不用在意時間。<br>
 預備階段讓您享有完整的休息和運動時間！
 
 * 番茄時鐘
@@ -19,7 +19,7 @@
   <img src="assets/images/github/pomodoro_page.png" width="200" height="400">
   <img src="assets/images/github/pomsetting_page.png" width="200" height="400">
 </div>
-番茄時鐘的循環階段
-(專注 -> 短休息 )* 3 + 專注 -> 長休息
+番茄時鐘的循環階段<br>
+(專注 -> 短休息 )* 3 + 專注 -> 長休息<br>
 每顆番茄都是專注與休息的結晶，這樣的時間規劃必定讓你獲得充分休息與成長！
 
