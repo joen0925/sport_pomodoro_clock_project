@@ -6,10 +6,13 @@
 
 * 運動時鐘
 <div style="display: flex; flex-direction: row;">
-  <img src="assets/images/github/sport_page.png" width="150" height="250">
-  <img src="assets/images/github/sportsetting_page.png" width="150" height="250">
+  <img src="assets/images/github/sport_page.png" width="200" height="300">
+  <img src="assets/images/github/sportsetting_page.png" width="200" height="300">
 </div>
 
 * 番茄時鐘
-
+<div style="display: flex; flex-direction: row;">
+  <img src="assets/images/github/pomodoro_page.png" width="200" height="300">
+  <img src="assets/images/github/pomsetting_page.png" width="200" height="300">
+</div>
 
